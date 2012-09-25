@@ -10,12 +10,30 @@
         %th Rating
         %th Remark
         %th Is Sent
+        %th Rating url
     %tbody
       - @latest_orders.each do |order|
         %tr
           %td=order.order_number
           %td=order.email
           %td=order.do_not_send_until
-          %td=( order.rating ? order.rating : "<i class=' icon-question-sign'></i>" ).html_safe
-          %td=( order.remark ? order.remark : "<i class=' icon-question-sign'></i>" ).html_safe
-          %td=( order.sent ? "<i class='icon-ok-sign'></i> Sent" : "<i class='icon-time'></i> Scheduled" ).html_safe
+          %td
+            - if order.rating
+              = order.rating
+            - else
+              %i.icon-question-sign
+          %td
+            - if order.remark
+              = order.remark
+            - else
+              %i.icon-question-sign
+          %td
+            - if order.sent
+              %i.icon-ok-sign
+              Sent
+            - else
+              %i.icon-time
+              Scheduled
+          %td
+            = link_to rate_path(order.order_hash) do
+              %i.icon-star

@@ -1,6 +1,6 @@
 Shopscore::Application.routes.draw do
   match "/dashboard", :to => "dashboard#index"
-  match "/beoordeel/:id", :to => "orders#rate"
+  match "/beoordeel/:order_hash", :to => "orders#rate", :as => "rate"
 
   devise_for :users, :path => '', :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 

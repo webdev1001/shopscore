@@ -1,0 +1,8 @@
+%h1 Order toevoegen
+
+= simple_form_for(@order, :html => {:class => 'form-horizontal' }) do |form|
+  = form.input :order_number
+  = form.input :email
+  = form.input :do_not_send_until
+  .control-group
+    .controls= form.button :submit, "Opslaan", :class => "btn btn-success"

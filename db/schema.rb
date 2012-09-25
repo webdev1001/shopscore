@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925135643) do
+ActiveRecord::Schema.define(:version => 20120925193140) do
 
   create_table "orders", :force => true do |t|
     t.integer  "shop_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120925135643) do
     t.boolean  "sent"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "order_hash"
   end
 
   create_table "shops", :force => true do |t|
