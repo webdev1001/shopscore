@@ -18,40 +18,31 @@
 
 
   %body
-    .navbar.navbar-fixed-top
+
+    .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Shopscore
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-
+          %a.brand{:href => "#"} ShopScore
+          - if current_user
+            .pull-right
+              =link_to dashboard_path, :class => "btn btn-primary" do
+                DASHBOARD
+                %i.icon-circle-arrow-right
+          - else
+            = form_tag user_session_path, :class => "navbar-form pull-right" do
+              = text_field_tag 'user[email]', nil, :placeholder => "Email", :class => "span2"
+              = password_field_tag 'user[password]', nil, :placeholder => "Password", :class => "span2"
+              %button.btn Sign in
     .container
-
-      .content
-        .row
-          .span9
-            = bootstrap_flash
-            = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
-    
-      %footer
-        %p &copy; Company 2012
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+      .hero-unit
+        %h1 ShopScore
+        .lead Easy customer feedback for your webshop.
+        %p=link_to "Learn more &raquo;".html_safe, "/about", :class => "btn btn-primary btn-large"
+      .row
+        .span12
+          = bootstrap_flash
+          = yield
+      %hr
+        %footer
+          %p &copy; ShopScore 2012
     = javascript_include_tag "application"
