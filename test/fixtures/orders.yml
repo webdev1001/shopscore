@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop_id: 1
+  order_number: MyString
+  email: MyString
+  score: 1
+  remark: MyText
+  do_not_send_until: 2012-09-25 15:56:43
+  sent: false
+
+two:
+  shop_id: 1
+  order_number: MyString
+  email: MyString
+  score: 1
+  remark: MyText
+  do_not_send_until: 2012-09-25 15:56:43
+  sent: false

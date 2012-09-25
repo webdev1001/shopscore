@@ -1,0 +1,18 @@
+%h1 Beoordeel uw bestelling:
+.lead Bedankt dat u ervoor heeft gekozen om uw bestelling te beoordelen.
+%dl
+  %dt Ordernummer
+  %dd=@order.order_number
+  %dt Bestelling geplaatst op
+  %dd=@order.created_at
+
+= simple_form_for(@order, :html => {:class => 'form-horizontal' }) do |form|
+  .control-group
+    = form.label :rating
+    .controls.rating
+      - (1..5).each do |i|
+        %span.icon-star-empty{"data-rating" => i, :class => (@order.rating == i ? "active" : "")}
+  = form.input :rating, :as => :hidden
+  = form.input :remark, :input_html => {:rows => 5, :style => "width:300px;"}
+  .control-group
+    .controls= form.button :submit, "Beoordeling verzenden", :class => "btn btn-success"

@@ -1,7 +1,10 @@
 Shopscore::Application.routes.draw do
   match "/dashboard", :to => "dashboard#index"
+  match "/beoordeel/:id", :to => "orders#rate"
 
   devise_for :users, :path => '', :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+
+  resources :orders
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

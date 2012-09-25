@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925113424) do
+ActiveRecord::Schema.define(:version => 20120925135643) do
+
+  create_table "orders", :force => true do |t|
+    t.integer  "shop_id"
+    t.string   "order_number"
+    t.string   "email"
+    t.integer  "rating"
+    t.text     "remark"
+    t.datetime "do_not_send_until"
+    t.boolean  "sent"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "shops", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -26,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120925113424) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "shop_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
